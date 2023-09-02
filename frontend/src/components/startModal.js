@@ -25,10 +25,11 @@ export default function StartModal() {
             <Modal show={show} size="lg">
                 <Modal.Header>
                     <Modal.Title className="titleModal">Word Scramble Game</Modal.Title>
+                    ENG / RO
                 </Modal.Header>
                 <Modal.Body className="body">
                     <Row>
-                        <h5># Descriptions</h5>
+                        <h5># Descriptions:</h5>
                         <p>
                             The Word Scramble Game is an engaging and interactive word puzzle that challenges your vocabulary and
                             problem-solving skills. In this exciting game, you'll encounter a variety of words that have been
@@ -57,12 +58,15 @@ export default function StartModal() {
                     </Row>
                     <Row>
                         <Col>
-                            <Button variant="primary" onClick={() => { handleCategoryChange("words1"); handleClose(); }}>
-                                Categoria words1
-                            </Button>
-                            <Button variant="secondary" onClick={() => { handleCategoryChange("words2"); handleClose(); }}>
-                                Categoria words2
-                            </Button>
+                            <Button variant="primary" onClick={() => { handleCategoryChange("Geography"); handleClose(); }}>
+                                Geograpghy
+                            </Button>{' '}
+                            <Button variant="primary" onClick={() => { handleCategoryChange("Countries"); handleClose(); }}>
+                                Countries
+                            </Button>{' '}
+                            <Button variant="primary" onClick={() => { handleCategoryChange("Fruits"); handleClose(); }}>
+                                Fruits
+                            </Button>{' '}
                         </Col>
                     </Row>
                 </Modal.Body>

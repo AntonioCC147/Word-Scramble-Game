@@ -5,35 +5,52 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-import { words1, words2 } from '../../components/words';
+import StopModal from '../../components/stopModal';
+
+import { geography, countries, fruits } from '../../components/words';
 
 import './game.css';
 
 export default function Game(props) {
     const { category } = props;
 
-    const [timeLeft, setTimeLeft] = useState(30);
+    const [points, setPoints] = useState(0);
+
+    const [timeLeft, setTimeLeft] = useState(3);
+    const [verifyTime, setVerifyTime] = useState(0);
     const [words, setWords] = useState([]);
 
-    const [displayWord, setDisplayWord] = useState("Press Refresh Word to start the game or wait 30 seconds");
-    const [correctWord, setCorrectWord] = useState("Press Refresh Word to start the game or wait 30 seconds");
+    const [displayWord, setDisplayWord] = useState("The Game will start soon...");
+    const [correctWord, setCorrectWord] = useState("The Game will start soon...");
     const [inputValue, setInputValue] = useState("");
 
+    const [isDisable, setIsDisable] = useState(true);
+
+    const [showModal, setShowModal] = useState(false);
+
     useEffect(() => {
-        if(category === "words1"){
-            setWords(words1);
+        if(category === "Geography"){
+            setWords(geography);
         }
-        else{
-            setWords(words2);
+        else if(category === "Countries"){
+            setWords(countries);
+        }
+        else if(category === "Fruits"){
+            setWords(fruits);
         }
 
         const timerId = setInterval(countdown, 1000);
 
         function countdown() {
-            if(timeLeft === 0){
+            if(timeLeft === 0 && verifyTime === 0){
                 clearInterval(timerId);
                 setDisplayWord(shuffleWord());
-                setTimeLeft(30);
+                setTimeLeft(30); ////////////////////////////////////// seteaza 2 daca vrei aici sa treraca mai rpd
+                setVerifyTime(verifyTime + 1);
+                setIsDisable(false);
+            }
+            else if(timeLeft === 0 && verifyTime === 1){
+                setShowModal(true);
             }
             else setTimeLeft(timeLeft - 1);
         }
@@ -60,7 +77,13 @@ export default function Game(props) {
     }
 
     function handleRefreshClick() {
-        setTimeLeft(30);
+        setPoints(points - 50);
+        setTimeLeft(timeLeft - 3); //refresh? -3
+
+        const whatIsTime = timeLeft - 3;
+        if(whatIsTime <= 0)
+            setShowModal(true);
+
         setDisplayWord(shuffleWord());
     }
 
@@ -70,43 +93,51 @@ export default function Game(props) {
 
     function handleSubmitClick() {
         if(inputValue === correctWord){
-            console.log('Correct answer!');
+            setPoints(points + 100);
             setDisplayWord(shuffleWord());
             setInputValue("");
-            setTimeLeft(30);
+            setTimeLeft(timeLeft + 5); //corect? +5
         }
         else{
-            console.log('Incorrect answer.');
+            setPoints(points - 30);
+            setTimeLeft(timeLeft - 3); //ai gresit? -3
         }
     }
 
     return (
-        <Container fluid className="container">
-            <Row>
-                <Col className="text-center">
-                    <p className="titleGame">Word Scramble Game</p>
-                    <p>{category}</p>
-                    <hr />
-                    {displayWord}<br />
-                    <hr />
-                    <input type="text" id="answer" value={inputValue} onChange={handleInputChange} />
-                </Col>
+        <Container fluid>
+            <Row className="points">
+                Points: {points}
             </Row>
-            <Row>
-                <p>Time left: {timeLeft} seconds remaining...</p>
-            </Row>
-            <Row>
-                <Col sm={6} className="text-center">
-                    <Button variant="danger" onClick={handleRefreshClick} size="lg">
-                        Refresh Word
-                    </Button>{' '}
-                </Col>
-                <Col sm={6} className="text-center">
-                    <Button variant="success" onClick={handleSubmitClick} size="lg">
-                        Submit Answer
-                    </Button>{' '}
-                </Col>
-            </Row>
+            <div className="container">
+                <Row>
+                    <Col className="text-center">
+                        <p className="titleGame">Word Scramble Game</p>
+                        <h3>Category: {category}</h3>
+                        <hr/>
+                        <h4>{displayWord}<br/></h4>
+                        <hr/>
+                        <input type="text" id="answer" value={inputValue} onChange={handleInputChange} />
+                    </Col>
+                </Row>
+                <Row>
+                    <h6>Time left: {timeLeft} seconds remaining...</h6>
+                </Row>
+                <Row>
+                    <Col sm={6} className="text-center">
+                        <Button variant="danger" onClick={handleRefreshClick} disabled={isDisable} size="lg">
+                            Refresh Word
+                        </Button>{' '}
+                    </Col>
+                    <Col sm={6} className="text-center">
+                        <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} size="lg">
+                            Submit Answer
+                        </Button>{' '}
+                    </Col>
+                </Row>
+            </div>
+
+            {showModal && <StopModal points={points}/>}
         </Container>
     );
 }

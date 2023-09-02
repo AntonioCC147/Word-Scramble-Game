@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import StartModal from "./components/startModal";
-import Game from "./pages/game/game";
 
 import './App.css';
 
