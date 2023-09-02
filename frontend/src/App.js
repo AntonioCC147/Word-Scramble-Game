@@ -11,7 +11,6 @@ function App() {
             <Router>
                 <Routes>
                     <Route exact path="/" element={<StartModal/>}></Route>
-                    <Route path="/functionalitati" element={<Game/>}></Route>
                 </Routes>
             </Router>
         </div>

@@ -84,7 +84,7 @@ export default function Game(props) {
         <Container fluid className="container">
             <Row>
                 <Col className="text-center">
-                    <p className="title">Word Scramble Game</p>
+                    <p className="titleGame">Word Scramble Game</p>
                     <p>{category}</p>
                     <hr />
                     {displayWord}<br />
