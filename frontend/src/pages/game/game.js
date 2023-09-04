@@ -5,14 +5,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-import StopModal from '../../components/stopModal';
+import StopModal from '../../components/modals/stopModal';
 
-import { geography, countries, fruits } from '../../components/words';
+import { geographyENG, geographyRO, countriesENG, countriesRO, fruitsENG, fruitsRO } from '../../components/words';
 
 import './game.css';
 
 export default function Game(props) {
-    const { category } = props;
+    const { category, language } = props;
 
     const [points, setPoints] = useState(0);
 
@@ -29,15 +29,12 @@ export default function Game(props) {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        if(category === "Geography"){
-            setWords(geography);
-        }
-        else if(category === "Countries"){
-            setWords(countries);
-        }
-        else if(category === "Fruits"){
-            setWords(fruits);
-        }
+        if(category === "GeographyENG") setWords(geographyENG);
+        else if(category === "GeographyRO") setWords(geographyRO);
+        else if(category === "CountriesENG") setWords(countriesENG);
+        else if(category === "CountriesRO") setWords(countriesRO);
+        else if(category === "FruitsENG") setWords(fruitsENG);
+        else if(category === "FruitsRO") setWords(fruitsRO);
 
         const timerId = setInterval(countdown, 1000);
 
@@ -106,38 +103,66 @@ export default function Game(props) {
 
     return (
         <Container fluid>
-            <Row className="points">
-                Points: {points}
-            </Row>
-            <div className="container">
-                <Row>
-                    <Col className="text-center">
-                        <p className="titleGame">Word Scramble Game</p>
-                        <h3>Category: {category}</h3>
-                        <hr/>
-                        <h4>{displayWord}<br/></h4>
-                        <hr/>
-                        <input type="text" id="answer" value={inputValue} onChange={handleInputChange} />
-                    </Col>
+            {!showModal && (
+                <Row className="points">
+                    Points: {points}
                 </Row>
-                <Row>
-                    <h6>Time left: {timeLeft} seconds remaining...</h6>
-                </Row>
-                <Row>
-                    <Col sm={6} className="text-center">
-                        <Button variant="danger" onClick={handleRefreshClick} disabled={isDisable} size="lg">
-                            Refresh Word
-                        </Button>{' '}
-                    </Col>
-                    <Col sm={6} className="text-center">
-                        <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} size="lg">
-                            Submit Answer
-                        </Button>{' '}
-                    </Col>
-                </Row>
-            </div>
-
-            {showModal && <StopModal points={points}/>}
+            )}
+            {!showModal && (
+                <div className="container">
+                    <Row>
+                        <Col className="text-center">
+                            {language === "ENG" && ( 
+                                <div>
+                                    <p className="titleGame">Word Scramble Game</p>
+                                    <h3>Category: {category}</h3>
+                                </div>
+                            )}
+                            {language === "RO" && ( 
+                                <div>
+                                    <p className="titleGame">Jocul Cuvintelor Încâlcite</p>
+                                    <h3>Categorie: {category}</h3>
+                                </div>
+                            )}
+                            <hr/>
+                            <h4>{displayWord}<br/></h4>
+                            <hr/>
+                            <input type="text" id="answer" value={inputValue} onChange={handleInputChange} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        {language === "ENG" && ( <h6>Time left: {timeLeft} seconds remaining...</h6> )}
+                        {language === "RO" && ( <h6>Timp rămas: {timeLeft} secunde rămase...</h6> )}
+                    </Row>
+                    <Row>
+                        <Col sm={6} className="text-center">
+                            {language === "ENG" && (
+                                <Button variant="danger" onClick={handleRefreshClick} disabled={isDisable} size="lg">
+                                    Refresh Word
+                                </Button>
+                            )}{' '}
+                            {language === "RO" && (
+                                <Button variant="danger" onClick={handleRefreshClick} disabled={isDisable} size="lg">
+                                    Reîncarcă Cuvântul
+                                </Button>
+                            )}{' '}
+                        </Col>
+                        <Col sm={6} className="text-center">
+                            {language === "ENG" && (
+                                <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} size="lg">
+                                    Submit Answer
+                                </Button>
+                            )}{' '}
+                            {language === "RO" && (
+                                <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} size="lg">
+                                    Trimite Răspunsul
+                                </Button>
+                            )}{' '}
+                        </Col>
+                    </Row>
+                </div>
+            )}
+            {showModal && <StopModal points={points} language={language}/>}
         </Container>
     );
 }

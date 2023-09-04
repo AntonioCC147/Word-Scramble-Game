@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import StartModal from "./components/startModal";
+import StartModal from './components/modals/startModal';
 
 import './App.css';
 
