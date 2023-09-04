@@ -110,14 +110,14 @@ export default function Game(props) {
     }
 
     return (
-        <Container fluid>
+        <Container fluid className="root-container">
             {!showModal && (
                 <Row className="points">
                     Points: {points}
                 </Row>
             )}
             {!showModal && (
-                <div className="container">
+                <div className="container" style={{backgroundColor: "white"}}>
                     <Row>
                         <Col className="text-center">
                             {language === "ENG" && ( 
@@ -135,12 +135,12 @@ export default function Game(props) {
                             <hr/>
                             <h4>{displayWord}</h4>
                             <div className="answerContainer">
-                                <Form.Control style={{ width: "350px" }} type="text" id="answer"
+                                <Form.Control style={{ width: "65%" }} type="text" id="answer"
                                     value={inputValue} onChange={handleInputChange} isInvalid={!inputIsCorrect}
                                 />
                                 {!inputIsCorrect && (
                                     <div className="answerContainer">
-                                        <Form.Control.Feedback type="invalid" style={{ width: "350px" }}/>
+                                        <Form.Control.Feedback type="invalid" style={{ width: "65%" }}/>
                                     </div>
                                 )}
                             </div>

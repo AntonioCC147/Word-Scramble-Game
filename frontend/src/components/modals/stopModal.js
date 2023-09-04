@@ -16,7 +16,7 @@ export default function StopModal(props) {
   
     return (
       <div>
-        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg" style={{backgroundColor: "#0093E9", backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)"}}>
             <Modal.Header>
                 {language === "ENG" && (
                     <Modal.Title>You just failed the Game!</Modal.Title>
