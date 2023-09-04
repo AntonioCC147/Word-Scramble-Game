@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 import StopModal from '../../components/modals/stopModal';
 
-import { geographyENG, geographyRO, countriesENG, countriesRO, fruitsENG, fruitsRO } from '../../components/words';
+import { geographyENG, geographyRO, countriesENG, countriesRO, careersENG, careersRO, animalsENG, animalsRO, fruitsENG, fruitsRO } from '../../components/words';
 
 import './game.css';
 
@@ -20,44 +20,15 @@ export default function Game(props) {
     const [verifyTime, setVerifyTime] = useState(0);
     const [words, setWords] = useState([]);
 
-    const [displayWord, setDisplayWord] = useState("The Game will start soon...");
-    const [correctWord, setCorrectWord] = useState("The Game will start soon...");
+    const [displayWord, setDisplayWord] = useState(". . .");
+    const [correctWord, setCorrectWord] = useState(". . .");
     const [inputValue, setInputValue] = useState("");
 
     const [isDisable, setIsDisable] = useState(true);
 
     const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-        if(category === "GeographyENG") setWords(geographyENG);
-        else if(category === "GeographyRO") setWords(geographyRO);
-        else if(category === "CountriesENG") setWords(countriesENG);
-        else if(category === "CountriesRO") setWords(countriesRO);
-        else if(category === "FruitsENG") setWords(fruitsENG);
-        else if(category === "FruitsRO") setWords(fruitsRO);
-
-        const timerId = setInterval(countdown, 1000);
-
-        function countdown() {
-            if(timeLeft === 0 && verifyTime === 0){
-                clearInterval(timerId);
-                setDisplayWord(shuffleWord());
-                setTimeLeft(30); ////////////////////////////////////// seteaza 2 daca vrei aici sa treraca mai rpd
-                setVerifyTime(verifyTime + 1);
-                setIsDisable(false);
-            }
-            else if(timeLeft === 0 && verifyTime === 1){
-                setShowModal(true);
-            }
-            else setTimeLeft(timeLeft - 1);
-        }
-
-        return () => {
-            clearInterval(timerId);
-        };
-    }, [timeLeft, category]);
-
-    function shuffleWord() {
+    const shuffleWord = useCallback(() => {
         const randomIndex = Math.floor(Math.random() * words.length);
         setCorrectWord(words[randomIndex]);
 
@@ -71,13 +42,45 @@ export default function Game(props) {
         const shuffledWord = wordArray.join('');
 
         return shuffledWord;
-    }
+    }, [words]);
+
+    useEffect(() => {
+        if(category === "GeographyENG") setWords(geographyENG);
+        else if(category === "GeographyRO") setWords(geographyRO);
+        else if(category === "CountriesENG") setWords(countriesENG);
+        else if(category === "CountriesRO") setWords(countriesRO);
+        else if(category === "CareersENG") setWords(careersENG);
+        else if(category === "CareersRO") setWords(careersRO);
+        else if(category === "AnimalsENG") setWords(animalsENG);
+        else if(category === "AnimalsRO") setWords(animalsRO);
+        else if(category === "FruitsENG") setWords(fruitsENG);
+        else if(category === "FruitsRO") setWords(fruitsRO);
+
+        const timerId = setInterval(countdown, 1000);
+
+        function countdown() {
+            if(timeLeft === 0 && verifyTime === 0){
+                clearInterval(timerId);
+                setDisplayWord(shuffleWord());
+                setTimeLeft(30);
+                setVerifyTime(verifyTime + 1);
+                setIsDisable(false);
+            }
+            else if(timeLeft === 0 && verifyTime === 1)
+                setShowModal(true);
+            else setTimeLeft(timeLeft - 1);
+        }
+
+        return () => {
+            clearInterval(timerId);
+        };
+    }, [timeLeft, category, verifyTime, shuffleWord]);
 
     function handleRefreshClick() {
-        setPoints(points - 50);
-        setTimeLeft(timeLeft - 3); //refresh? -3
+        setPoints(points - 10);
+        setTimeLeft(timeLeft - 2);
 
-        const whatIsTime = timeLeft - 3;
+        const whatIsTime = timeLeft - 2;
         if(whatIsTime <= 0)
             setShowModal(true);
 
@@ -90,14 +93,14 @@ export default function Game(props) {
 
     function handleSubmitClick() {
         if(inputValue === correctWord){
-            setPoints(points + 100);
+            setPoints(points + 50);
             setDisplayWord(shuffleWord());
             setInputValue("");
-            setTimeLeft(timeLeft + 5); //corect? +5
+            setTimeLeft(timeLeft + 5);
         }
         else{
             setPoints(points - 30);
-            setTimeLeft(timeLeft - 3); //ai gresit? -3
+            setTimeLeft(timeLeft - 2);
         }
     }
 
@@ -125,7 +128,7 @@ export default function Game(props) {
                                 </div>
                             )}
                             <hr/>
-                            <h4>{displayWord}<br/></h4>
+                            <h4>{displayWord}</h4>
                             <hr/>
                             <input type="text" id="answer" value={inputValue} onChange={handleInputChange} />
                         </Col>
@@ -162,6 +165,7 @@ export default function Game(props) {
                     </Row>
                 </div>
             )}
+
             {showModal && <StopModal points={points} language={language}/>}
         </Container>
     );

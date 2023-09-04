@@ -6,3 +6,8 @@
 .titleModal {
     font-size: 36px !important;
 }
+
+.modal-content-container {
+    max-height: 90vh;
+    overflow-y: auto;
+}

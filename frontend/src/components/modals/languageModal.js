@@ -41,7 +41,7 @@ const DescriptionRO = () => {
                 Jocul Cuvintelor Încâlcite este un puzzle de cuvinte captivant și interactiv care vă provoacă vocabularul și
                 abilități de rezolvare a problemelor. În acest joc captivant, vei întâlni o varietate de cuvinte care au fost
                 amestecat inteligent, lăsându-vă să descifrați și să rearanjați literele pentru a forma cuvântul corect. este
-                o modalitate distractivă și educativă de a vă extinde cunoștințele despre cuvinte, în timp ce vă distrați de minune!
+                o modalitate distractivă și educativă de a vă extinde cunoștințele despre cuvinte, în timp ce vă distrați!
             </p>
         </Row>
     )
@@ -70,7 +70,7 @@ const RulesRO = () => {
                 <li>Obiectiv: Scopul jocului cuvintelor încâlcite este de a descifra un set de litere pentru a forma un cuvânt valid într-un interval de timp limitat.</li>
                 <li>Categorii de joc: Jocul oferă mai multe categorii de cuvinte din care puteți alege. Jucătorii pot selecta categoria preferată înainte de a începe jocul.</li>
                 <li>Începutul jocului: Jocul începe cu un cronometru care este setat la o durată specifică, de obicei 30 de secunde.</li>
-                <li>Reîmprospătarea cuvântului: Dacă vă aflați în impas sau doriți să încercați o abordare diferită, puteți apăsa butonul "Reîmprospătare Cuvânt" pentru a amesteca literele și a primi un cuvânt amestecat nou.</li>
+                <li>Reîmprospătarea cuvântului: Dacă vă aflați în impas sau doriți să încercați o abordare diferită, puteți apăsa butonul "Reîncarcă Cuvântul" pentru a amesteca literele și a primi un cuvânt amestecat nou.</li>
                 <li>Sfârșitul jocului: Jocul continuă până când cronometrul ajunge la zero. În acest moment, sesiunea de joc se încheie, iar performanța dumneavoastră este afișată.</li>
             </ol>
         </Row>
@@ -80,10 +80,12 @@ const RulesRO = () => {
 const PointsENG = () => {
     return (
         <Row>
-            <h5># Points:</h5>
-            Woohoo, you are reading this text in a modal!
-
-            Choose a category to start
+            <h5># Points and Seconds:</h5>
+            <ol style={{paddingLeft: "50px"}}>
+                <li>Guessing a Word: +50 points and +5 seconds</li>
+                <li>Get wrong a Word: -30 points and -3 seconds</li>
+                <li>Refresh a Word: -10 points and -2 seconds</li>
+            </ol>
         </Row>
     )
 }
@@ -91,10 +93,12 @@ const PointsENG = () => {
 const PointsRO = () => {
     return (
         <Row>
-            <h5># Puncte:</h5>
-            Woohoo, you are reading this text in a modal!
-
-            Choose a category to start
+            <h5># Puncte și Secunde:</h5>
+            <ol style={{paddingLeft: "50px"}}>
+                <li>Ghicirea unui Cuvânt: +50 puncte și +5 secunde</li>
+                <li>Greșirea unui Cuvânt: -30 puncte și -3 secunde</li>
+                <li>Reîncărcarea unui Cuvânt: -10 puncte și -2 secunde</li>
+            </ol>
         </Row>
     )
 }

@@ -66,6 +66,61 @@ let countriesRO = [
     "uruguay", "uzbekistan", "vanuatu", "vatican", "venezuela", "vietnam", "yemen", "zambia", "zimbabwe"
 ];
 
+let careersENG = [
+    "teacher", "doctor", "engineer", "nurse", "lawyer", "accountant", "chef", "artist", "musician", "actor", "writer", "scientist",
+    "dentist", "architect", "pharmacist", "veterinarian", "police", "firefighter", "mechanic", "plumber", "electrician", "waiter",
+    "barista", "developer", "designer", "manager", "salesperson", "athlete", "coach", "pilot", "attendant", "construction",
+    "psychologist", "social", "librarian", "journalist", "banker", "advisor", "real estate", "entrepreneur", "paramedic",
+    "phlebotomist", "surgeon", "chemist", "physicist", "biologist", "geologist", "meteorologist", "zoologist", "botanist",
+    "mathematician", "economist", "professor", "historian", "anthropologist", "astronomer", "cartoonist", "filmmaker",
+    "photographer", "editor", "translator", "paleontologist", "nutritionist", "counselor", "therapist", "gardener", "landscaper",
+    "security", "trainer", "baker", "florist", "stylist", "makeup", "fashion", "tailor", "costume", "singer", "composer", "radio",
+    "presenter", "author", "proofreader", "biomedical", "civil", "mechanical", "electrical", "chemical", "nuclear", "aerospace",
+    "environmental", "web", "game", "ui/ux", "branding", "digital", "content", "analyst", "scientist", "investment", "judge"
+];
+
+let careersRO = [
+    "profesor", "medic", "inginer", "asistentă", "avocat", "contabil", "bucătar", "artist", "muzician", "actor", "scriitor", "om de știință",
+    "dentist", "arhitect", "farmacist", "medic veterinar", "polițist", "pompier", "mecanic", "instalator", "electrician", "chelner",
+    "barista", "dezvoltator", "designer", "manager", "vânzător", "sportiv", "antrenor", "pilot", "însoțitor", "constructor",
+    "psiholog", "asistent social", "bibliotecar", "jurnalist", "bancher", "consilier", "agent imobiliar", "antreprenor", "paramedic",
+    "asistent de laborator", "chirurg", "chimist", "fizician", "biolog", "geolog", "meteorolog", "zoolog", "botanist",
+    "matematician", "economist", "profesor universitar", "istoric", "antropolog", "astronom", "caricaturist", "regizor de film",
+    "fotograf", "editor", "traducător", "paleontolog", "nutriționist", "consilier", "terapeut", "grădinar", "peisagist",
+    "agent de securitate", "antrenor", "cofetar", "florar", "stilist", "make-up artist", "modă", "croitor", "costumier", "cântăreț", "compozitor", "prezentator de radio",
+    "autor", "corector", "biomedic", "civil", "mecanic", "electrician", "chimist", "nuclear", "aerospațial", "mediu", "web", "jocuri", "UI/UX", "branding", "digital", "conținut", "analist", "om de știință", "investitor", "judecător"
+];
+
+let animalsENG = [
+    "lion", "elephant", "tiger", "vulture", "dog", "cat", "dolphin", "panda", "gorilla", "giraffe",
+    "koala", "kangaroo", "squirrel", "salamander", "rabbit", "crane", "monkey", "crow", "camels", "deer",
+    "fox", "owl", "fish", "frog", "hippopotamus", "rhinoceros", "penguin", "parrot", "iguana", "lemur",
+    "alligator", "duckling", "wasp", "squirrel", "spider", "wolf", "peacock", "ferret", "ant", "seal",
+    "duck", "bison", "bat", "night bird", "hamster", "beaver", "armadillo", "echidna", "condor",
+    "lizard", "tapir", "turtle dove", "coati", "rat", "zebra", "iguanodon", "hyena", "lemur", "flamingo",
+    "cow", "sparrow", "butterfly", "cobra", "panther", "cheetah", "ostrich", "chameleon", "locust", "jackal",
+    "dromedary", "newt", "chameleon", "liger", "brown elephant", "kangaroo", "otter", "vulture", "dinosaur",
+    "armadillo", "puppy", "ladybug", "snail", "buffalo", "salamander", "hops", "armadillo", "guanaco", "gavial",
+    "manatee", "tapir", "llama", "yak", "kangaroo", "pangolin", "dik-dik", "Yakutian", "Javan", "anchovy",
+    "humpback", "oarfish", "axolotl", "bluebird", "quail", "guppy", "piranha", "swordfish", "gazelle",
+    "manatee", "okapi", "peacock", "sea otter", "rattlesnake", "cheetah", "liger", "tarsier", "wallaby"
+];
+
+let animalsRO = [
+    "leu", "elefant", "tigru", "vultur", "caine", "pisica", "delfin", "panda", "gorila", "girafa",
+    "koala", "cangur", "everita", "salamandra", "iepure", "cocor", "maimuta", "cioara", "camile", "caprioara",
+    "vulpe", "bufnita", "peste", "broasca", "hipopotam", "rinocer", "pinguin", "papagal", "iguana", "lemur",
+    "aligator", "pui de rata", "viespe", "everita", "paianjen", "lup", "paun", "dihor", "furnica", "foca",
+    "ratusca", "bizon", "liliac", "pasare de noapte", "hamster", "castor", "armadillo", "echidna", "condor",
+    "soparla", "tapir", "turturica", "coati", "raton", "zebra", "iguanodon", "hiena", "lemur", "flamingo",
+    "vaca", "vrabie", "fluture", "cobra", "pantera", "ghepard", "strutz", "chameleon", "lacusta", "-sacal",
+    "dromader", "triton", "camelion", "ligru", "elefant maro", "cangur", "lutru", "vultur", "dinozaur",
+    "armadillo", "catel", "buburuza", "melc", "bivol", "salamandra", "hamei", "tatu", "guanaco", "gavial",
+    "lamantin", "tapir", "lama", "yak", "kangaroo", "pangolin", "ponei", "iakutian", "javan", "anchovy",
+    "humpback", "oarfish", "axolotl", "bluebird", "quail", "guppy", "piranha", "swordfish", "gazelle",
+    "manatee", "okapi", "peacock", "harciog", "rattlesnake", "cheetah", "liger", "tarsier", "wallaby"
+];
+
 let fruitsENG = [
     "apple", "banana", "orange", "grapes", "strawberry", "pineapple", "watermelon", "kiwi", "mango", "blueberry",
     "peach", "raspberry", "cherry", "pomegranate", "pear", "lemon", "coconut", "cantaloupe", "apricot", "plum",
@@ -96,4 +151,4 @@ let fruitsRO = [
     "rowan", "sugarapple", "whitesapote"
 ];
 
-export { geographyENG, geographyRO, countriesENG, countriesRO, fruitsENG, fruitsRO };
+export { geographyENG, geographyRO, countriesENG, countriesRO, careersENG, careersRO, animalsENG, animalsRO, fruitsENG, fruitsRO };

@@ -19,23 +19,34 @@ export default function StopModal(props) {
         <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
             <Modal.Header>
                 {language === "ENG" && (
-                    <Modal.Title>You just failed the Game</Modal.Title>
+                    <Modal.Title>You just failed the Game!</Modal.Title>
                 )}
                 {language === "RO" && (
-                    <Modal.Title>Tocmai ai terminat Jocul</Modal.Title>
+                    <Modal.Title>Tocmai ai terminat Jocul!</Modal.Title>
                 )}
             </Modal.Header>
             <Modal.Body>
-                Ai terminat jocul, bla bla bla
-                <br/>
-                Total Points: {points}
+                {language === "ENG" && (
+                    <div>
+                        <h6>Thank you for playing this game!</h6>
+                        <br/>
+                        <h3>Total Points: {points}</h3>
+                    </div>
+                )}
+                {language === "RO" && (
+                    <div>
+                        <h6>Mulțumim că ai jucat acest joc!</h6>
+                        <br/>
+                        <h3>Total Puncte: {points}</h3>
+                    </div>
+                )}
             </Modal.Body>
             <Modal.Footer>
                 {language === "ENG" && (
-                    <Button variant="primary" onClick={handleRefreshClick}>Restart Game</Button>
+                    <Button variant="dark" onClick={handleRefreshClick}>Restart Game</Button>
                 )}
                 {language === "RO" && (
-                    <Button variant="primary" onClick={handleRefreshClick}>Restartează Jocul</Button>
+                    <Button variant="dark" onClick={handleRefreshClick}>Restartează Jocul</Button>
                 )}
             </Modal.Footer>
         </Modal>
