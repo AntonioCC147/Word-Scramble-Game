@@ -105,7 +105,11 @@ export default function Game(props) {
         else{
             setPoints(points - 30);
             setTimeLeft(timeLeft - 2);
-            setInputIsCorrect(false); 
+            setInputIsCorrect(false);
+
+            const whatIsTime = timeLeft - 2;
+            if(whatIsTime <= 0)
+                setShowModal(true);
         }
     }
 
