@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 import StopModal from '../../components/modals/stopModal';
 
@@ -25,8 +26,9 @@ export default function Game(props) {
     const [inputValue, setInputValue] = useState("");
 
     const [isDisable, setIsDisable] = useState(true);
-
     const [showModal, setShowModal] = useState(false);
+
+    const [inputIsCorrect, setInputIsCorrect] = useState(true);
 
     const shuffleWord = useCallback(() => {
         const randomIndex = Math.floor(Math.random() * words.length);
@@ -61,7 +63,7 @@ export default function Game(props) {
         function countdown() {
             if(timeLeft === 0 && verifyTime === 0){
                 clearInterval(timerId);
-                setDisplayWord(shuffleWord());
+                setDisplayWord(shuffleWord().split("").join(" "));
                 setTimeLeft(30);
                 setVerifyTime(verifyTime + 1);
                 setIsDisable(false);
@@ -79,12 +81,13 @@ export default function Game(props) {
     function handleRefreshClick() {
         setPoints(points - 10);
         setTimeLeft(timeLeft - 2);
+        setInputIsCorrect(true);
 
         const whatIsTime = timeLeft - 2;
         if(whatIsTime <= 0)
             setShowModal(true);
 
-        setDisplayWord(shuffleWord());
+        setDisplayWord(shuffleWord().split("").join(" "));
     }
 
     function handleInputChange(event) {
@@ -97,10 +100,12 @@ export default function Game(props) {
             setDisplayWord(shuffleWord());
             setInputValue("");
             setTimeLeft(timeLeft + 5);
+            setInputIsCorrect(true); 
         }
         else{
             setPoints(points - 30);
             setTimeLeft(timeLeft - 2);
+            setInputIsCorrect(false); 
         }
     }
 
@@ -129,8 +134,17 @@ export default function Game(props) {
                             )}
                             <hr/>
                             <h4>{displayWord}</h4>
+                            <div className="answerContainer">
+                                <Form.Control style={{ width: "350px" }} type="text" id="answer"
+                                    value={inputValue} onChange={handleInputChange} isInvalid={!inputIsCorrect}
+                                />
+                                {!inputIsCorrect && (
+                                    <div className="answerContainer">
+                                        <Form.Control.Feedback type="invalid" style={{ width: "350px" }}/>
+                                    </div>
+                                )}
+                            </div>
                             <hr/>
-                            <input type="text" id="answer" value={inputValue} onChange={handleInputChange} />
                         </Col>
                     </Row>
                     <Row>
