@@ -97,7 +97,7 @@ export default function Game(props) {
     function handleSubmitClick() {
         if(inputValue === correctWord){
             setPoints(points + 50);
-            setDisplayWord(shuffleWord());
+            setDisplayWord(shuffleWord().split("").join(" "));
             setInputValue("");
             setTimeLeft(timeLeft + 5);
             setInputIsCorrect(true); 
