@@ -113,6 +113,11 @@ export default function Game(props) {
         }
     }
 
+    function handleFormSubmit(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+        handleSubmitClick(); // Call your submit function when the form is submitted
+    }
+
     return (
         <Container fluid className="root-container">
             {!showModal && (
@@ -138,16 +143,18 @@ export default function Game(props) {
                             )}
                             <hr/>
                             <h4>{displayWord}</h4>
-                            <div className="answerContainer">
-                                <Form.Control style={{ width: "65%" }} type="text" id="answer"
-                                    value={inputValue} onChange={handleInputChange} isInvalid={!inputIsCorrect}
-                                />
-                                {!inputIsCorrect && (
-                                    <div className="answerContainer">
-                                        <Form.Control.Feedback type="invalid" style={{ width: "65%" }}/>
-                                    </div>
-                                )}
-                            </div>
+                            <form onSubmit={handleFormSubmit}>
+                                <div className="answerContainer">
+                                    <Form.Control style={{ width: "65%" }} type="text" id="answer"
+                                        value={inputValue} onChange={handleInputChange} isInvalid={!inputIsCorrect}
+                                    />
+                                    {!inputIsCorrect && (
+                                        <div className="answerContainer">
+                                            <Form.Control.Feedback type="invalid" style={{ width: "65%" }}/>
+                                        </div>
+                                    )}
+                                </div>
+                            </form>
                             <hr/>
                         </Col>
                     </Row>
@@ -170,15 +177,16 @@ export default function Game(props) {
                         </Col>
                         <Col sm={6} className="text-center">
                             {language === "ENG" && (
-                                <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} size="lg">
+                                <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} id="myButton" size="lg">
                                     Submit Answer
                                 </Button>
                             )}{' '}
                             {language === "RO" && (
-                                <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} size="lg">
+                                <Button variant="success" onClick={handleSubmitClick} disabled={isDisable} id="myButton" size="lg">
                                     Trimite Răspunsul
                                 </Button>
                             )}{' '}
+                            
                         </Col>
                     </Row>
                 </div>
