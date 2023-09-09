@@ -146,7 +146,7 @@ export default function Game(props) {
                             <form onSubmit={handleFormSubmit}>
                                 <div className="answerContainer">
                                     <Form.Control style={{ width: "65%" }} type="text" id="answer"
-                                        value={inputValue} onChange={handleInputChange} isInvalid={!inputIsCorrect}
+                                        value={inputValue} onChange={handleInputChange} isInvalid={!inputIsCorrect} disabled={isDisable}
                                     />
                                     {!inputIsCorrect && (
                                         <div className="answerContainer">
