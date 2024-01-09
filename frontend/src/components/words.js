@@ -1,3 +1,4 @@
+//vectori de cuvinte care contin cuvinte cheie specifice categoriei, atat in romana, cat si in engleza
 let geographyENG = [
     "continent", "island", "mountain", "river", "desert", "forest", "ocean", "valley", "canyon", "plateau",
     "glacier", "archipelago", "volcano", "peninsula", "tundra", "delta", "fjord", "atoll", "estuary", "savannah",

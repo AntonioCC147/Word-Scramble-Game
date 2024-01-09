@@ -1,8 +1,11 @@
+//importam din bootstrap modalul si row-ul
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/esm/Row';
 
+//importam styles.css
 import '../../components/styles.css';
 
+//componenta titlului in limga engleza
 const TitleENG = () => {
     return (
         <Modal.Title className="titleModal">
@@ -11,6 +14,7 @@ const TitleENG = () => {
     )
 }
 
+//componenta titlului in limba romana
 const TitleRO = () => {
     return (
         <Modal.Title className="titleModal">
@@ -19,6 +23,7 @@ const TitleRO = () => {
     )
 }
 
+//componenta de descriere in limba engleza
 const DescriptionENG = () => {
     return (
         <Row>
@@ -33,6 +38,7 @@ const DescriptionENG = () => {
     )
 }
 
+//componenta de descriere in limba romana
 const DescriptionRO = () => {
     return (
         <Row>
@@ -40,13 +46,14 @@ const DescriptionRO = () => {
             <p>
                 Jocul Cuvintelor Încâlcite este un puzzle de cuvinte captivant și interactiv care vă provoacă vocabularul și
                 abilități de rezolvare a problemelor. În acest joc captivant, vei întâlni o varietate de cuvinte care au fost
-                amestecat inteligent, lăsându-vă să descifrați și să rearanjați literele pentru a forma cuvântul corect. este
-                o modalitate distractivă și educativă de a vă extinde cunoștințele despre cuvinte, în timp ce vă distrați!
+                amestecat inteligent, lăsându-vă să descifrați și să rearanjați literele pentru a forma cuvântul corect. Este
+                o modalitate distractivă de a vă extinde cunoștințele despre cuvinte, în timp ce vă distrați!
             </p>
         </Row>
     )
 }
 
+//componenta regulilor in limba engleza
 const RulesENG = () => {
     return (
         <Row>
@@ -62,6 +69,7 @@ const RulesENG = () => {
     )
 }
 
+//componenta regulilor in limba romana
 const RulesRO = () => {
     return (
         <Row>
@@ -70,13 +78,14 @@ const RulesRO = () => {
                 <li>Obiectiv: Scopul jocului cuvintelor încâlcite este de a descifra un set de litere pentru a forma un cuvânt valid într-un interval de timp limitat.</li>
                 <li>Categorii de joc: Jocul oferă mai multe categorii de cuvinte din care puteți alege. Jucătorii pot selecta categoria preferată înainte de a începe jocul.</li>
                 <li>Începutul jocului: Jocul începe cu un cronometru care este setat la o durată specifică, de obicei 30 de secunde.</li>
-                <li>Reîmprospătarea cuvântului: Dacă vă aflați în impas sau doriți să încercați o abordare diferită, puteți apăsa butonul "Reîncarcă Cuvântul" pentru a amesteca literele și a primi un cuvânt amestecat nou.</li>
+                <li>Reîmprospătarea cuvântului: Dacă vă aflați în impas sau doriți să încercați o altă abordare, puteți apăsa butonul "Reîncarcă Cuvântul" pentru a amesteca literele și a primi un cuvânt nou.</li>
                 <li>Sfârșitul jocului: Jocul continuă până când cronometrul ajunge la zero. În acest moment, sesiunea de joc se încheie, iar performanța dumneavoastră este afișată.</li>
             </ol>
         </Row>
     )
 }
 
+//componenta punctelor in limba engleza
 const PointsENG = () => {
     return (
         <Row>
@@ -90,6 +99,7 @@ const PointsENG = () => {
     )
 }
 
+//componenta punctelor in limba romana
 const PointsRO = () => {
     return (
         <Row>
@@ -103,4 +113,5 @@ const PointsRO = () => {
     )
 }
 
+//exportam toate aceste componente pentru a le putea utiliza mai tarziu
 export { TitleENG, TitleRO, DescriptionENG, DescriptionRO, RulesENG, RulesRO, PointsENG, PointsRO };
