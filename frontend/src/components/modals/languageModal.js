@@ -1,4 +1,4 @@
-//importam din bootstrap modalul si row-ul
+//importam din bootstrap modalul si liniile
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/esm/Row';
 
@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/esm/Row';
 import '../../components/styles.css';
 
 //componenta titlului in limga engleza
+//PS: De acum inainte, toate tagurile cu verde sunt 100% din bootstrap (<Modal>, <Modal.Title>, <Row>, <Col>, etc)
 const TitleENG = () => {
     return (
         <Modal.Title className="titleModal">
